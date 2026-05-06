@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/drivers', require('./routes/driverRoutes'));
-app.use('/api/payments', require('./routes/paymentRoutes'));
+app.use('/api/rentlogs', require('./routes/rentLogRoutes'));
 
 // Test route
 app.get('/', (req, res) => {
