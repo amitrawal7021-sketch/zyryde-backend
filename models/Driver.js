@@ -34,7 +34,7 @@ const driverSchema = new mongoose.Schema({
   joinDate: {
     type: Date,
     default: Date.now
-  }
+  },
   status: {
     type: String,
     default: 'pending',
