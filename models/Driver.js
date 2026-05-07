@@ -35,6 +35,19 @@ const driverSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+  status: {
+    type: String,
+    default: 'pending',
+    enum: ['pending', 'approved', 'rejected']
+  },
+  registeredBy: {
+    type: String,
+    default: 'Direct'
+  },
+  area: {
+    type: String,
+    default: ''
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Driver', driverSchema);

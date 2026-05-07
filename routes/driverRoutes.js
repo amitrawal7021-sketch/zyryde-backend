@@ -53,5 +53,29 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 });
+// GET pending drivers (from Terminal 2)
+router.get('/pending', async (req, res) => {
+  try {
+    const drivers = await Driver.find({ status: 'pending' }).sort({ createdAt: -1 });
+    res.json({ success: true, data: drivers });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// UPDATE driver status (approve/reject)
+router.patch('/:id/status', async (req, res) => {
+  try {
+    const { status } = req.body;
+    const driver = await Driver.findByIdAndUpdate(
+      req.params.id,
+      { status },
+      { new: true }
+    );
+    res.json({ success: true, data: driver });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 
 module.exports = router;
