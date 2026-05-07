@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: '*', methods: ['GET','POST','PUT','PATCH','DELETE'], allowedHeaders: ['Content-Type','Authorization'] }));
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
